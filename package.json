@@ -1,0 +1,11 @@
+{
+  "name": "codegdl2018",
+  "version": "1.0.0",
+  "description": "CodeGDL2018 Challange",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
