@@ -1,9 +1,10 @@
 CREATE DATABASE IF NOT EXISTS codegdl_gases;
 USE codegdl_gases;
 -- SET default_storage_engine=INNODB;
+DROP TABLE IF EXISTS emisiones;
 CREATE TABLE emisiones (
     ID INT NOT NULL AUTO_INCREMENT,
-    FECHA DATE,
+    FECHA VARCHAR(200) ,
     CLAVE_EST VARCHAR(50),
     PARAMETRO VARCHAR(50),
     HORA01 FLOAT,

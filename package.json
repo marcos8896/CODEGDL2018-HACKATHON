@@ -1,11 +1,37 @@
 {
-  "name": "codegdl2018",
+  "name": "CODEGDL2018",
   "version": "1.0.0",
-  "description": "CodeGDL2018 Challange",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "main": "server/server.js",
+  "engines": {
+    "node": ">=4"
   },
-  "author": "",
-  "license": "ISC"
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node .",
+    "posttest": "npm run lint && nsp check",
+    "ggizi": "node server/migrations.js && node require-csv.js --max-old-space-size=12000" 
+  },
+  "dependencies": {
+    "compression": "^1.0.3",
+    "cors": "^2.5.2",
+    "csv-to-array": "^1.0.2",
+    "helmet": "^1.3.0",
+    "loopback": "^3.0.0",
+    "loopback-boot": "^2.6.5",
+    "loopback-component-explorer": "^5.0.0",
+    "loopback-connector-mysql": "^5.2.0",
+    "serve-favicon": "^2.0.1",
+    "strong-error-handler": "^2.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "eslint-config-loopback": "^8.0.0",
+    "nsp": "^2.1.0"
+  },
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "license": "UNLICENSED",
+  "description": "CODEGDL2018"
 }

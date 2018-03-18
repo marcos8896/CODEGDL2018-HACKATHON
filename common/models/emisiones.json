@@ -1,0 +1,167 @@
+{
+  "name": "Emisiones",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "FECHA": {
+      "type": "string"
+    },
+    "CLAVE_EST": {
+      "type": "string"
+    },
+    "PARAMETRO": {
+      "type": "string"
+    },
+    "HORA01": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA02": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA03": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA04": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA05": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA06": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA07": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA08": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA09": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA10": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA11": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA12": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA13": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA14": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA15": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA16": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA17": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA18": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA19": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA20": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA21": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA22": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA23": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    },
+    "HORA24": {
+      "type": "number",
+      "dataType": "decimal",
+      "precision": 10,
+      "scale": 2
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

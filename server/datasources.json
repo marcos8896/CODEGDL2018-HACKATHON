@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql-ds": {
+    "name": "mysql-ds",
+    "connector": "mysql",
+    "host": "localhost",
+    "user": "root",
+    "password": "qwerty1234",
+    "database": "codegdl_gases"
+  }
+  
+}
