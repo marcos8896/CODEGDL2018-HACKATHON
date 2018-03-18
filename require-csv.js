@@ -9,12 +9,12 @@ const columns = [
 ];
 
 const files = [
-  // "1996", "1997", "1998", 
-  // "1999", "2000", "2001", 
-  // "2002", "2003", "2004", 
-  // "2005", "2006", "2007", 
-  // "2008", "2009", "2010", 
-  // "2011"
+  "1996", "1997", "1998", 
+  "1999", "2000", "2001", 
+  "2002", "2003", "2004", 
+  "2005", "2006", "2007", 
+  "2008", "2009", "2010", 
+  "2011"
 ];
 
 
@@ -49,16 +49,17 @@ eachSeries(files, (file, cb) => {
 function insertArray( data ) {
   console.log("AGUANTA VARA, MEN");
   let rowsToInsert = removeHeaderRows(data);
-  Emisiones.create( rowsToInsert, (err, createdRows) => {
-          console.log("adentro");
-    if ( err )
-      console.log("HUBO UN ERRORSINI", err);
+  console.log('rowsToInsert: ', rowsToInsert.length);
+  // Emisiones.create( rowsToInsert, (err, createdRows) => {
+  //         console.log("adentro");
+  //   if ( err )
+  //     console.log("HUBO UN ERRORSINI", err);
     
-    console.log("TODO SE REGISTRÓ BIEN SUKISTRUKIS");
-    process.exit(0);
+  //   console.log("TODO SE REGISTRÓ BIEN SUKISTRUKIS");
+  //   process.exit(0);
 
-  });
-  console.log("OTS, MEN");
+  // });
+  // console.log("OTS, MEN");
 }
 
 
