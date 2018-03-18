@@ -1,7 +1,6 @@
-// const connection = require('./db-connection');
 const server = require('./server/server');
 const Emisiones = server.models.Emisiones;
-// console.log(Emisiones);
+
 const columns = [
   "FECHA","CLAVE_EST","PARAMETRO","HORA01","HORA02","HORA03","HORA04","HORA05",
   "HORA06","HORA07","HORA08","HORA09","HORA10","HORA11","HORA12","HORA13","HORA14",
@@ -9,11 +8,11 @@ const columns = [
 ];
 
 const files = [
-  // "1996", "1997", "1998", 
-  //"1999", "2000", "2001", 
-  // "2002", "2003", "2004", 
-  //  "2005", "2006", "2007", 
-  // "2008", "2009", "2010", 
+  "1996", "1997", "1998", 
+  "1999", "2000", "2001", 
+  "2002", "2003", "2004", 
+  "2005", "2006", "2007", 
+  "2008", "2009", "2010", 
   "2011"
 ];
 

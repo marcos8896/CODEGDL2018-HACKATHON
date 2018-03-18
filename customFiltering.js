@@ -3,7 +3,7 @@ const Emisiones = server.models.Emisiones;
 const Json2csvParser = require('json2csv').Parser;
 const fs = require('fs');
 
-const property = 'HORA08'
+const propertyHour = 'HORA08'
 const CLAVE_EST = 'AGU';
 const PARAMETRO = 'CO';
 const INITIAL_DATE = '1998-01-01';
@@ -13,10 +13,10 @@ const filter = {
   where: {
     CLAVE_EST,
     PARAMETRO,
-    FECHA: {between: ['1996-01-01', '1996-12-31']}
+    FECHA: {between: [INITIAL_DATE, FINAL_DATE]}
   },
   order: 'FECHA ASC',
-  fields: { [property]: true, FECHA: true },
+  fields: { [propertyHour]: true, FECHA: true },
 }
 
 Emisiones.find(filter)
@@ -33,10 +33,10 @@ Emisiones.find(filter)
     //Se eliminan posibles ceros y negativos en las primeras dos posiciones para normalizar
     //los datos.
     for (let i = 0; i < 2; i++)
-      if(elements[i][property] <= 0) 
+      if(elements[i][propertyHour] <= 0) 
         for (let x = i; x < length; x++) 
-          if(elements[x][property] > 0) {
-            elements[i][property] = elements[x][property];
+          if(elements[x][propertyHour] > 0) {
+            elements[i][propertyHour] = elements[x][propertyHour];
             break;
           }
 
@@ -44,9 +44,9 @@ Emisiones.find(filter)
 
     //Se normalizan las posiciones con cero y negativos con el promedio de las dos anteriores.
     for (let i = 2; i < length; i++)
-      if(elements[i][property] <= 0) {
-        let mean = (elements[i-1][property] + elements[i-2][property])/2;
-        elements[i][property] = mean;
+      if(elements[i][propertyHour] <= 0) {
+        let mean = (elements[i-1][propertyHour] + elements[i-2][propertyHour])/2;
+        elements[i][propertyHour] = mean;
       }
 
     return elements;
@@ -57,7 +57,7 @@ Emisiones.find(filter)
   .then( filteredArray => {
     
     return filteredArray.sort((obj1, obj2) => 
-      obj1[property] - obj2[property]
+      obj1[propertyHour] - obj2[propertyHour]
     );
   })
   
@@ -87,11 +87,11 @@ Emisiones.find(filter)
   .then( normalizedArray => {
     console.log('normalizedArray gg: ', normalizedArray[0]);
     // const fields = Object.keys(normalizedArray[10]);
-    const headerFields = [ 'UNIQUE', property ];
+    const headerFields = [ 'UNIQUE', propertyHour ];
 
     console.log('headerFields: ', headerFields);
     const rows = normalizedArray.map( el => {
-      return { 'UNIQUE': el.UNIQUE, [property]: el[property], }
+      return { 'UNIQUE': el.UNIQUE, [propertyHour]: el[propertyHour], }
     });
     
     const json2csvParser = new Json2csvParser({ fields: headerFields });
@@ -104,7 +104,7 @@ Emisiones.find(filter)
   //Escribe objeto CSV en archivo.
   .then( csv => {
     // write to a CSV new file.
-  fs.writeFile(`./csv_results/${property}_${CLAVE_EST}_${PARAMETRO}_${INITIAL_DATE}_${FINAL_DATE}_${new Date().getTime().toString()}.csv`, csv, (err) => {  
+  fs.writeFile(`./csv_results/${propertyHour}_${CLAVE_EST}_${PARAMETRO}_${INITIAL_DATE}_${FINAL_DATE}_${new Date().getTime().toString()}.csv`, csv, (err) => {  
     // throws an error, you could also catch it here
     if (err) throw err;
 

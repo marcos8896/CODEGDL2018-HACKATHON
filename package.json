@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "start": "node .",
     "posttest": "npm run lint && nsp check",
-    "ggizi": "node server/migrations.js && node require-csv.js --max-old-space-size=12000"
+    "generate-csv-from-xlxs": "ssconvert xlsx_source/1996.xlsx csv_outputs/1996.csv && ssconvert xlsx_source/1997.xlsx csv_outputs/1997.csv && ssconvert xlsx_source/1998.xlsx csv_outputs/1998.csv && ssconvert xlsx_source/1999.xlsx csv_outputs/1999.csv && ssconvert xlsx_source/2000.xlsx csv_outputs/2000.csv && ssconvert xlsx_source/2001.xlsx csv_outputs/2001.csv && ssconvert xlsx_source/2002.xlsx csv_outputs/2002.csv && ssconvert xlsx_source/2003.xlsx csv_outputs/2003.csv && ssconvert xlsx_source/2004.xlsx csv_outputs/2004.csv && ssconvert xlsx_source/2005.xlsx csv_outputs/2005.csv && ssconvert xlsx_source/2006.xlsx csv_outputs/2006.csv && ssconvert xlsx_source/2007.xlsx csv_outputs/2007.csv && ssconvert xlsx_source/2008.xlsx csv_outputs/2008.csv && ssconvert xlsx_source/2009.xlsx csv_outputs/2009.csv && ssconvert xlsx_source/2010.xlsx csv_outputs/2010.csv && ssconvert xlsx_source/2011.xlsx csv_outputs/2011.csv",
+    "dangerous-migration": "node server/migrations.js && node require-csv.js --max-old-space-size=12000",
+    "full-initial-script": "npm run generate-csv-from-xlxs && npm run dangerous-migration && npm run filtering",
+    "filtering": "node customFiltering.js"
   },
   "dependencies": {
     "compression": "^1.0.3",
