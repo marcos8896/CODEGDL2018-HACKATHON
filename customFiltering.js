@@ -3,15 +3,19 @@ const Emisiones = server.models.Emisiones;
 const Json2csvParser = require('json2csv').Parser;
 const fs = require('fs');
 
-const property = 'HORA05'
-const CLAVE_EST = 'ATM';
+const property = 'HORA08'
+const CLAVE_EST = 'AGU';
 const PARAMETRO = 'CO';
+const INITIAL_DATE = '1998-01-01';
+const FINAL_DATE = '1998-12-31';
 
 const filter = {
   where: {
     CLAVE_EST,
-    PARAMETRO
+    PARAMETRO,
+    FECHA: {between: ['1996-01-01', '1996-12-31']}
   },
+  order: 'FECHA ASC',
   fields: { [property]: true, FECHA: true },
 }
 
@@ -21,7 +25,10 @@ Emisiones.find(filter)
     
     const length = elements.length;
 
-
+    //Agregar llave única ordenada para identificar un orden ascendente en la fecha
+    elements.forEach( (element, index) => {
+      element.UNIQUE = index + 1;
+    });
 
     //Se eliminan posibles ceros y negativos en las primeras dos posiciones para normalizar
     //los datos.
@@ -53,6 +60,7 @@ Emisiones.find(filter)
       obj1[property] - obj2[property]
     );
   })
+  
   //Filtrar el ruido de los datos.
   .then( sortedElements => {
     console.log('sortedElements: ', sortedElements[0]);
@@ -68,12 +76,23 @@ Emisiones.find(filter)
     return normalizedArray;
 
   })
+
+  .then( removeNoiseElements => {
+    return removeNoiseElements.sort((obj1, obj2) => 
+      obj1['UNIQUE'] - obj2['UNIQUE']
+    );
+  })
+
+  //Crea objeto CSV
   .then( normalizedArray => {
     console.log('normalizedArray gg: ', normalizedArray[0]);
     // const fields = Object.keys(normalizedArray[10]);
-    const headerFields = Object.values(filter.fields);
+    const headerFields = [ 'UNIQUE', property ];
+
     console.log('headerFields: ', headerFields);
-    const rows = normalizedArray;
+    const rows = normalizedArray.map( el => {
+      return { 'UNIQUE': el.UNIQUE, [property]: el[property], }
+    });
     
     const json2csvParser = new Json2csvParser({ fields: headerFields });
     const csv = json2csvParser.parse(rows);
@@ -82,9 +101,10 @@ Emisiones.find(filter)
 
     // console.log('fields: ', fields);
   })
+  //Escribe objeto CSV en archivo.
   .then( csv => {
-    // write to a new file named 2pac.txt
-  fs.writeFile(`./csv_results/${property}_${CLAVE_EST}_${PARAMETRO}_${new Date().getTime().toString()}.csv`, csv, (err) => {  
+    // write to a CSV new file.
+  fs.writeFile(`./csv_results/${property}_${CLAVE_EST}_${PARAMETRO}_${INITIAL_DATE}_${FINAL_DATE}_${new Date().getTime().toString()}.csv`, csv, (err) => {  
     // throws an error, you could also catch it here
     if (err) throw err;
 

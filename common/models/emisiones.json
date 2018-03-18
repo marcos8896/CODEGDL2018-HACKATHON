@@ -7,7 +7,7 @@
   },
   "properties": {
     "FECHA": {
-      "type": "string"
+      "type": "date"
     },
     "CLAVE_EST": {
       "type": "string"
